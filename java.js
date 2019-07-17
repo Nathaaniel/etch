@@ -4,14 +4,33 @@ const container = document.querySelector('#flex-container');
 
 
 
-createEtch(64);
+createEtch(16);
+
+function newGame(){
+    var response = prompt("How many tiles wide?" , 64);
+    response = parseInt(response);
+    if (Number.isInteger(response)){
+        newEtch(response)
+    }
+    else {
+        return alert("Please enter an integer")
+    }
+}
+
+
+function newEtch (columns) {
+    container.innerHTML ='';
+    
+    createEtch(columns);
+
+    
+}
 
 function createEtch(columns){
     let squareWidth = (960 - (2*columns)) / columns;
     console.log(squareWidth + "px")
 
-
-
+     
     for (let i=0; i<(columns**2); i++) {
         const i = document.createElement('div');
         i.classList.add('box');
